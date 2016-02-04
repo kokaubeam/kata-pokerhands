@@ -22,6 +22,10 @@ export function isRoyalFlush(hand) {
     J: false,
     10: false
   }
+  const suits = new Set(hand.map(card => card.suit))
+  if (suits.size != 1) {
+    return false
+  }
 
   for (let card of hand) {
     if (!(card.value in royalFlushChecklist)) {
