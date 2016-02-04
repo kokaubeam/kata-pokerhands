@@ -1,0 +1,7 @@
+./**/*specs.js
+
+--require babel-register
+--require babel-polyfill
+--require test/config.js
+
+--ui bdd
