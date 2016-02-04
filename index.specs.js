@@ -8,7 +8,7 @@ describe('kata-pokerhands', () => {
   })
 
   describe('#sortHand', () => {
-    it('should sort a hand, lowes to highest value', () => {
+    it('should sort a hand, lowest to highest value', () => {
       let sortedHand = pokerhands.sortHand([
         { value: 'A', suite: 'Diamonds' },
         { value: '8', suite: 'Diamonds' }
@@ -21,7 +21,7 @@ describe('kata-pokerhands', () => {
   })
 
   describe('#isRoyalFlush', () => {
-    context('when a royal flush', () => {
+    context('when the hand is a royal flush', () => {
       it('should return true', () => {
         let isRoyalFlush = pokerhands.isRoyalFlush([
           { value: 'A', suit: 'Diamonds' },
@@ -34,8 +34,8 @@ describe('kata-pokerhands', () => {
       })
     })
 
-    context('when not a royal flush', () => {
-      it('should return false when a hand has a card that is not in a royal flush', () => {
+    context('when the hand has a card that is not in a royal flush', () => {
+      it('should return false ', () => {
         let isRoyalFlush = pokerhands.isRoyalFlush([
           { value: 'A', suit: 'Diamonds' },
           { value: 'K', suit: 'Diamonds' },
@@ -45,8 +45,10 @@ describe('kata-pokerhands', () => {
         ])
         expect(isRoyalFlush).to.equal(false)
       })
+    })
 
-      it('should return false when a hand has duplicate royal flush cards', () => {
+    context('when the hand has duplicate royal flush cards', () => {
+      it('should return false', () => {
         let isRoyalFlush = pokerhands.isRoyalFlush([
           { value: 'A', suit: 'Diamonds' },
           { value: 'K', suit: 'Diamonds' },
