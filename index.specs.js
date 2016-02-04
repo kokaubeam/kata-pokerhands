@@ -128,4 +128,20 @@ describe('kata-pokerhands', () => {
       })
     })
   })
+
+describe('#isRoyalFlush', () => {
+    context('when the hand is four of a kind', () => {
+      it('should return true', () => {
+        let isFourOfAKind = pokerhands.isFourOfAKind()
+        expect(isFourOfAKind).to.equal(true)
+      })
+    })
+
+    context('when the hand has a card that is not in a royal flush', () => {
+      it('should return false ', () => {
+        
+      })
+    })
+
+  })
 })
