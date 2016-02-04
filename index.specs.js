@@ -59,6 +59,19 @@ describe('kata-pokerhands', () => {
         expect(isRoyalFlush).to.equal(false)
       })
     })
+
+    context('when the hand is not also a straight flush', () => {
+      it('should return false', () => {
+        let isRoyalFlush = pokerhands.isRoyalFlush([
+          { value: 'A', suit: 'Diamonds' },
+          { value: 'K', suit: 'Hearts' },
+          { value: 'Q', suit: 'Diamonds' },
+          { value: 'J', suit: 'Diamonds' },
+          { value: 10, suit: 'Diamonds' }
+        ])
+        expect(isRoyalFlush).to.equal(false)
+      })
+    })
   })
 
   describe('#isStraightFlush', () => {
