@@ -66,6 +66,23 @@ export function isStraightFlush(hand) {
   return suits.size == 1
 }
 
-export function isFourOfAKind() {
-  return true
+export function isFourOfAKind(hand) {
+  const stats = hand.reduce((carry, current) => {
+    if (!(current.value in carry)) {
+      carry[current.value] = 1
+    } else {
+      carry[current.value]++
+    }
+    return carry
+  }, {})
+
+  for (let item in stats) {
+
+    if (stats[item] >= 4) {
+      return true
+    }
+  }
+ 
+  return false
 }
+

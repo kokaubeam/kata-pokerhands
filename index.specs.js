@@ -132,7 +132,13 @@ describe('kata-pokerhands', () => {
   describe('#isFourOfAKind', () => {
     context('when the hand is four of a kind', () => {
       it('should return true', () => {
-        let isFourOfAKind = pokerhands.isFourOfAKind()
+        let isFourOfAKind = pokerhands.isFourOfAKind([
+          { value: 3, suit: 'Hearts' },
+          { value: 3, suit: 'Clubs' },
+          { value: 3, suit: 'Diamonds' },
+          { value: 3, suit: 'Spades' },
+          { value: 4, suit: 'Spades' }
+        ])
         expect(isFourOfAKind).to.equal(true)
       })
     })
