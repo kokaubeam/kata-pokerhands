@@ -101,7 +101,6 @@ describe('kata-pokerhands', () => {
       })
     })
 
-
     context('when the hand is not of the same suit', () => {
       it('should return false', () => {
         let isStraightFlush = pokerhands.isStraightFlush([
@@ -154,6 +153,13 @@ describe('kata-pokerhands', () => {
         ])
         expect(isFourOfAKind).to.equal(false)
       })
+    })
+  })
+
+  describe('#isFullHouse', () => {
+    it('should return a Boolean', () => {
+      const isFullHouse = pokerhands.isFullHouse()
+      expect(isFullHouse).to.be.a('boolean')
     })
   })
 })
