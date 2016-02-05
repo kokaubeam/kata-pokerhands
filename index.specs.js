@@ -161,5 +161,10 @@ describe('kata-pokerhands', () => {
       const isFullHouse = pokerhands.isFullHouse()
       expect(isFullHouse).to.be.a('boolean')
     })
+
+    it('should return false by default', () => {
+      const isFullHouse = pokerhands.isFullHouse()
+      expect(isFullHouse).to.equal(false)
+    })
   })
 })
