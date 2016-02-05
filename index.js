@@ -87,5 +87,5 @@ export function isFourOfAKind(hand) {
 }
 
 export function isFullHouse() {
-  return true
+  return false
 }
