@@ -166,5 +166,15 @@ describe('kata-pokerhands', () => {
       const isFullHouse = pokerhands.isFullHouse()
       expect(isFullHouse).to.equal(false)
     })
+
+    it('should require a valid hand of cards', () => {
+      const isFullHouse = pokerhands.isFullHouse()
+      expect(() => {
+        pokerhands.isFullHouse([
+          { value: 3, suit: 'Diamonds' },
+          { value: 6, suit: 'Spades' },
+          { value: 4, suit: 'Spades' }
+        ])}).to.throw('Invalid Hand')
+    })
   })
 })
