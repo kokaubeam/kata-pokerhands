@@ -168,13 +168,23 @@ describe('kata-pokerhands', () => {
     })
 
     it('should require a valid hand of cards', () => {
-      const isFullHouse = pokerhands.isFullHouse()
       expect(() => {
         pokerhands.isFullHouse([
           { value: 3, suit: 'Diamonds' },
           { value: 6, suit: 'Spades' },
           { value: 4, suit: 'Spades' }
         ])}).to.throw('Invalid Hand')
+    })
+
+    it('should not throw an Invalid Hand error on a valid hand', () => {
+      expect(() => {
+        pokerhands.isFullHouse([
+          { value: 3, suit: 'Diamonds' },
+          { value: 6, suit: 'Spades' },
+          { value: 4, suit: 'Spades' },
+          { value: 'A', suit: 'Clubs' },
+          { value: 7, suit: 'Hearts' }
+        ])}).to.not.throw('Invalid Hand')
     })
   })
 })
