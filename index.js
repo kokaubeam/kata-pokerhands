@@ -46,7 +46,7 @@ export function isStraightFlush(hand) {
   hand = sortHand(hand)
 
   const suits = new Set(hand.map(card => card.suit))
-  
+
   let currentIndex
   let previousIndex
   for (let card of hand) {
@@ -64,4 +64,8 @@ export function isStraightFlush(hand) {
   }
 
   return suits.size == 1
+}
+
+export function isFourOfAKind() {
+  return true
 }
