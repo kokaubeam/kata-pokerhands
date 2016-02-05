@@ -129,7 +129,7 @@ describe('kata-pokerhands', () => {
     })
   })
 
-describe('#isRoyalFlush', () => {
+describe('#isFourOfAKind', () => {
     context('when the hand is four of a kind', () => {
       it('should return true', () => {
         let isFourOfAKind = pokerhands.isFourOfAKind()
