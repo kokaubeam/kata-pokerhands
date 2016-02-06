@@ -176,6 +176,17 @@ describe('kata-pokerhands', () => {
         ])}).to.throw('Invalid Hand')
     })
 
+    it('should thow an Invalid Hand when given invalid cards', () => {
+      expect(() => {
+        pokerhands.isFullHouse([
+          { value: 3 },
+          { suit: 'Spades' },
+          { value: 4, suit: 'Spades' },
+          { suit: 'Spades' },
+          { candy: 'Skittles' }
+        ])}).to.throw('Invalid Hand')
+    })
+
     it('should not throw an Invalid Hand error on a valid hand', () => {
       expect(() => {
         pokerhands.isFullHouse([
