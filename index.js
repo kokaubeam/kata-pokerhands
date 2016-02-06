@@ -87,8 +87,13 @@ export function isFourOfAKind(hand) {
 }
 
 export function isFullHouse(hand) {
-  if (hand) {
+  if (!hand) {
+    return false
+  }
+
+  if (hand.length != 5) {
     throw new Error('Invalid Hand')    
   }
+
   return false
 }
