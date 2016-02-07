@@ -92,8 +92,14 @@ export function isFullHouse(hand) {
   }
 
   if (hand.length != 5) {
-    throw new Error('Invalid Hand')    
+    throw new Error('Invalid Hand')
   }
+
+  hand.forEach(card => {
+    if (!('value' in card) || !('suit' in card)) {
+      throw new Error('Invalid Hand')
+    }
+  })
 
   return false
 }
