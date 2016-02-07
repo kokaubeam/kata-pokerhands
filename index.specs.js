@@ -1,4 +1,4 @@
-import * as pokerhands from './index'
+import pokerhands from './index'
 
 describe('kata-pokerhands', () => {
   describe('#rankHands', () => {
@@ -157,45 +157,86 @@ describe('kata-pokerhands', () => {
   })
 
   describe('#isFullHouse', () => {
-    it('should return a Boolean', () => {
-      const isFullHouse = pokerhands.isFullHouse()
-      expect(isFullHouse).to.be.a('boolean')
+    it('should validate the hand', sinon.test(() => {
+      sinon.spy(pokerhands, 'isValidHand')
+      pokerhands.isFullHouse()
+      expect(pokerhands.isValidHand).to.have.been.called
+    }))
+
+    context.skip('when the hand contains 3 cards of the same value, with the remaining 2 cards forming a pair', () => {
+      it('should return true', () => {
+        const isFullHouse = pokerhands.isFullHouse([
+          { value: 3, suit: 'Hearts' },
+          { value: 3, suit: 'Clubs' },
+          { value: 3, suit: 'Diamonds' },
+          { value: 4, suit: 'Hearts' },
+          { value: 4, suit: 'Spades' }
+        ])
+        expect(isFullHouse).to.equal(true)
+      })
     })
 
-    it('should return false by default', () => {
-      const isFullHouse = pokerhands.isFullHouse()
-      expect(isFullHouse).to.equal(false)
-    })
-
-    it('should require a valid hand of cards', () => {
-      expect(() => {
-        pokerhands.isFullHouse([
+    context('when the hand does not contain a full house', () => {
+      it('should return false', () => {
+        const isFullHouse = pokerhands.isFullHouse([
+          { value: 3, suit: 'Hearts' },
+          { value: 3, suit: 'Clubs' },
           { value: 3, suit: 'Diamonds' },
           { value: 6, suit: 'Spades' },
           { value: 4, suit: 'Spades' }
-        ])}).to.throw('Invalid Hand')
+        ])
+        expect(isFullHouse).to.equal(false)
+      })
+    })
+  })
+
+  describe('#isValidHand', () => {
+    context('when a hand has more than 5 cards', () => {
+      it('should return false', () => {
+        expect(pokerhands.isValidHand([
+          { value: 3, suit: 'Diamonds' },
+          { value: 6, suit: 'Spades' },
+          { value: 4, suit: 'Spades' },
+          { value: 5, suit: 'Diamonds' },
+          { value: 6, suit: 'Diamonds' },
+          { value: 7, suit: 'Diamonds' }
+        ])).to.equal(false)
+      })
     })
 
-    it('should thow an Invalid Hand when given invalid cards', () => {
-      expect(() => {
-        pokerhands.isFullHouse([
+    context('when a hand has less than 5 cards', () => {
+      it('should return false', () => {
+        expect(pokerhands.isValidHand([
+          { value: 3, suit: 'Diamonds' },
+          { value: 6, suit: 'Spades' },
+          { value: 4, suit: 'Spades' },
+          { value: 5, suit: 'Diamonds' }
+        ])).to.equal(false)
+      })
+    })
+
+    context('when a card is missing a value or suit', () => {
+      it('should return false', () => {
+        expect(pokerhands.isValidHand([
           { value: 3 },
           { suit: 'Spades' },
           { value: 4, suit: 'Spades' },
           { suit: 'Spades' },
           { candy: 'Skittles' }
-        ])}).to.throw('Invalid Hand')
+        ])).to.equal(false)
+      })
     })
 
-    it('should not throw an Invalid Hand error on a valid hand', () => {
-      expect(() => {
-        pokerhands.isFullHouse([
+    context('when a hand is valid', () => {
+      it('should return true', () => {
+        expect(pokerhands.isValidHand([
           { value: 3, suit: 'Diamonds' },
           { value: 6, suit: 'Spades' },
           { value: 4, suit: 'Spades' },
           { value: 'A', suit: 'Clubs' },
           { value: 7, suit: 'Hearts' }
-        ])}).to.not.throw('Invalid Hand')
+        ])).to.equal(true)
+      })
     })
   })
 })
