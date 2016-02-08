@@ -163,7 +163,7 @@ describe('kata-pokerhands', () => {
       expect(pokerhands.isValidHand).to.have.been.called
     }))
 
-    context.skip('when the hand contains 3 cards of the same value, with the remaining 2 cards forming a pair', () => {
+    context('when the hand contains 3 cards of the same value, with the remaining 2 cards forming a pair', () => {
       it('should return true', () => {
         const isFullHouse = pokerhands.isFullHouse([
           { value: 3, suit: 'Hearts' },
