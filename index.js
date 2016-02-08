@@ -15,6 +15,24 @@ class Pokerhands {
     return hand
   }
 
+  isValidHand(hand) {
+    if (!hand) { 
+      return false
+    }
+
+    if (hand.length != 5) {
+      return false
+    }
+
+    for (let card of hand) {
+      if (!('value' in card) || !('suit' in card)) {
+        return false
+      }
+    }
+
+    return true
+  }
+
   isRoyalFlush(hand) {
     let royalFlushChecklist = {
       A: false,
@@ -88,19 +106,7 @@ class Pokerhands {
   }
 
   isFullHouse(hand) {
-    if (!hand) {
-      return false
-    }
-
-    if (hand.length != 5) {
-      throw new Error('Invalid Hand')
-    }
-
-    hand.forEach(card => {
-      if (!('value' in card) || !('suit' in card)) {
-        throw new Error('Invalid Hand')
-      }
-    })
+    var isValid = this.isValidHand(hand)    
 
     return false
   }
