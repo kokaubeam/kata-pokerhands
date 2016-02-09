@@ -1,5 +1,6 @@
 
 const cardValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
+const cardSuits = ['Diamonds', 'Hearts', 'Spades', 'Clubs']
 
 class Pokerhands {
   rankHands(hand1, hand2) {
@@ -37,7 +38,12 @@ class Pokerhands {
     if (cardValues.indexOf(card.value) == -1) {
       return false
     }
-    return ('value' in card) && ('suit' in card)
+
+    if (cardSuits.indexOf(card.suit) == -1) {
+      return false
+    }
+
+    return true
   }
 
   isRoyalFlush(hand) {
