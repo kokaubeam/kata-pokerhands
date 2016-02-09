@@ -25,12 +25,16 @@ class Pokerhands {
     }
 
     for (let card of hand) {
-      if (!('value' in card) || !('suit' in card)) {
+      if (!this.isValidCard(card)) {
         return false
       }
     }
 
     return true
+  }
+
+  isValidCard(card) {
+    return ('value' in card) && ('suit' in card)
   }
 
   isRoyalFlush(hand) {
