@@ -271,5 +271,13 @@ describe('kata-pokerhands', () => {
         )).to.equal(false)
       })
     })
+
+    context('when a card has an invalid suit', () => {
+      it('should return false', () => {
+        expect(pokerhands.isValidCard(
+          { value: 'K', suit: 'Spoons' }
+        )).to.equal(false)
+      })
+    })
   })
 })
