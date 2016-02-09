@@ -34,6 +34,9 @@ class Pokerhands {
   }
 
   isValidCard(card) {
+    if (cardValues.indexOf(card.value) == -1) {
+      return false
+    }
     return ('value' in card) && ('suit' in card)
   }
 
