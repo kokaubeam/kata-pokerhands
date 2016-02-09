@@ -191,12 +191,6 @@ describe('kata-pokerhands', () => {
   })
 
   describe('#isValidHand', () => {
-    it('should validate the cards', sinon.test(() => {
-      sinon.spy(pokerhands, 'isValidCard')
-      pokerhands.isValidHand()
-      expect(pokerhands.isValidCard).to.have.been.called
-    }))
-
     context('when a hand has more than 5 cards', () => {
       it('should return false', () => {
         expect(pokerhands.isValidHand([
@@ -221,15 +215,26 @@ describe('kata-pokerhands', () => {
       })
     })
 
-    context('when a hand is valid', () => {
-      it('should return true', () => {
-        expect(pokerhands.isValidHand([
+    context('when a hand has 5 cards', () => {
+      let isValidHand
+
+      before(() => {
+        sinon.spy(pokerhands, 'isValidCard')
+        isValidHand = pokerhands.isValidHand([
           { value: 3, suit: 'Diamonds' },
           { value: 6, suit: 'Spades' },
           { value: 4, suit: 'Spades' },
           { value: 'A', suit: 'Clubs' },
           { value: 7, suit: 'Hearts' }
-        ])).to.equal(true)
+        ])
+      })
+
+      it('should validate each card', sinon.test(() => {
+        expect(pokerhands.isValidCard.callCount).to.equal(5)
+      }))
+
+      it('should return true', () => {
+        expect(isValidHand).to.equal(true)
       })
     })
   })
@@ -242,6 +247,7 @@ describe('kata-pokerhands', () => {
         )).to.equal(false)
       })
     })
+
     context('when a card is missing a value', () => {
       it('should return false', () => {
         expect(pokerhands.isValidCard(
