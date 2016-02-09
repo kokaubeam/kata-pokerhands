@@ -16,7 +16,7 @@ class Pokerhands {
   }
 
   isValidHand(hand) {
-    if (!hand) { 
+    if (!hand) {
       return false
     }
 
@@ -105,23 +105,24 @@ class Pokerhands {
   }
 
   isFullHouse(hand) {
-    var isValid = this.isValidHand(hand)    
-
-    if (isValid) {
-      const stats = hand.reduce((carry, current) => {
-        if (!(current.value in carry)) {
-          carry[current.value] = 1
-        } else {
-          carry[current.value]++
-        }
-        return carry
-      }, {})
-
-      const cardValueTypes = Object.keys(stats).length
-      if (cardValueTypes == 2) {
-        return true
-      }
+    if (!this.isValidHand(hand)) {
+      return false
     }
+
+    const stats = hand.reduce((carry, current) => {
+      if (!(current.value in carry)) {
+        carry[current.value] = 1
+      } else {
+        carry[current.value]++
+      }
+      return carry
+    }, {})
+
+    const cardValueTypes = Object.keys(stats).length
+    if (cardValueTypes == 2) {
+      return true
+    }
+
     return false
   }
 }
