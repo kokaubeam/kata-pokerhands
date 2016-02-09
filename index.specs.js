@@ -240,6 +240,14 @@ describe('kata-pokerhands', () => {
   })
 
   describe('#isValidCard', () => {
+    context('when a card has a value and suit', () => {
+      it('should return true', () => {
+        expect(pokerhands.isValidCard(
+          { value: 5, suit: 'Spades' }
+        )).to.equal(true)
+      })
+    })
+
     context('when a card is missing a suit', () => {
       it('should return false', () => {
         expect(pokerhands.isValidCard(
@@ -252,6 +260,14 @@ describe('kata-pokerhands', () => {
       it('should return false', () => {
         expect(pokerhands.isValidCard(
           { suit: 'Spades' }
+        )).to.equal(false)
+      })
+    })
+
+    context('when a card has an invalid value', () => {
+      it('should return false', () => {
+        expect(pokerhands.isValidCard(
+          { value: 11, suit: 'Spades' }
         )).to.equal(false)
       })
     })
