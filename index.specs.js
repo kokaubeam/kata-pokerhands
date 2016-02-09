@@ -157,8 +157,8 @@ describe('kata-pokerhands', () => {
   })
 
   describe('#isFullHouse', () => {
-    it('should validate the hand', sinon.test(() => {
-      sinon.spy(pokerhands, 'isValidHand')
+    it('should validate the hand', sinon.test(function() {
+      this.spy(pokerhands, 'isValidHand')
       pokerhands.isFullHouse()
       expect(pokerhands.isValidHand).to.have.been.called
     }))
@@ -229,6 +229,10 @@ describe('kata-pokerhands', () => {
         ])
       })
 
+      after(() => {
+        pokerhands.isValidCard.restore()
+      })
+
       it('should validate each card', sinon.test(() => {
         expect(pokerhands.isValidCard.callCount).to.equal(5)
       }))
@@ -279,5 +283,13 @@ describe('kata-pokerhands', () => {
         )).to.equal(false)
       })
     })
+  })
+
+  describe('#isPair', () => {
+    it('should validate the hand', sinon.test(function() {
+      this.spy(pokerhands, 'isValidHand')
+      pokerhands.isPair()
+      expect(pokerhands.isValidHand).to.have.been.called
+    }))
   })
 })
