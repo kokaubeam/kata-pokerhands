@@ -138,6 +138,12 @@ class Pokerhands {
 
     return false
   }
+
+  isPair(hand) {
+    if (!this.isValidHand(hand)) {
+      return false
+    }
+  }
 }
 
 export default new Pokerhands()
