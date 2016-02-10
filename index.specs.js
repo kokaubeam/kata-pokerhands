@@ -291,5 +291,17 @@ describe('kata-pokerhands', () => {
       pokerhands.isPair()
       expect(pokerhands.isValidHand).to.have.been.called
     }))
+
+    context('when it contains a pair', () => {
+      it('should return true', () => {
+        expect(pokerhands.isValidCard([
+          { value: 'A', suit: 'Diamonds' },
+          { value: 'A', suit: 'Diamonds' },
+          { value: 'Q', suit: 'Diamonds' },
+          { value: 'J', suit: 'Diamonds' },
+          { value: 10, suit: 'Diamonds' }
+        ])).to.equal(true)
+      })
+    })
   })
 })
