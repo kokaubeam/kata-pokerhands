@@ -143,6 +143,7 @@ class Pokerhands {
     if (!this.isValidHand(hand)) {
       return false
     }
+    return true
   }
 }
 
