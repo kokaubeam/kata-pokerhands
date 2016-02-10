@@ -292,7 +292,7 @@ describe('kata-pokerhands', () => {
       expect(pokerhands.isValidHand).to.have.been.called
     }))
 
-    context('when it contains a pair', () => {
+    context('when 2 of the 5 cards in the hand have the same value', () => {
       it('should return true', () => {
         expect(pokerhands.isPair([
           { value: 'A', suit: 'Diamonds' },
@@ -301,6 +301,20 @@ describe('kata-pokerhands', () => {
           { value: 'J', suit: 'Diamonds' },
           { value: 10, suit: 'Diamonds' }
         ])).to.equal(true)
+      })
+    })
+
+    context('when more than 2 cards have the same value', () => {
+      context('and there isn\'t another pair', () => {
+        it('should return false', () => {
+          expect(pokerhands.isPair([
+            { value: 'A', suit: 'Diamonds' },
+            { value: 'A', suit: 'Spades' },
+            { value: 'A', suit: 'Hearts' },
+            { value: 'J', suit: 'Diamonds' },
+            { value: 10, suit: 'Diamonds' }
+          ])).to.equal(false)
+        })
       })
     })
   })
