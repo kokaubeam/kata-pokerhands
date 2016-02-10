@@ -294,7 +294,7 @@ describe('kata-pokerhands', () => {
 
     context('when it contains a pair', () => {
       it('should return true', () => {
-        expect(pokerhands.isValidHand([
+        expect(pokerhands.isPair([
           { value: 'A', suit: 'Diamonds' },
           { value: 'A', suit: 'Spades' },
           { value: 'Q', suit: 'Diamonds' },
