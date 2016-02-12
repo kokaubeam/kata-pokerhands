@@ -46,6 +46,10 @@ class Pokerhands {
     return true
   }
 
+  countPairs(hand) {
+    return 1
+  }
+
   isRoyalFlush(hand) {
     let royalFlushChecklist = {
       A: false,
