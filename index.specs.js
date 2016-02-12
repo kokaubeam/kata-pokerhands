@@ -349,5 +349,23 @@ describe('kata-pokerhands', () => {
         expect(pairCount).to.equal(1)
       })
     })
+
+    context('when there is not a pair in a hand', () => {
+      let pairCount
+
+      before(() => {
+        pairCount = pokerhands.countPairs([
+          { value: '9', suit: 'Diamonds' },
+          { value: 'A', suit: 'Spades' },
+          { value: 'Q', suit: 'Diamonds' },
+          { value: 'J', suit: 'Clubs' },
+          { value: 10, suit: 'Diamonds' }
+        ])
+      })
+
+      it('should return 0', () => {
+        expect(pairCount).to.equal(0)
+      })
+    })
   })
 })
