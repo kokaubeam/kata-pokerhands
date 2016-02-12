@@ -317,5 +317,17 @@ describe('kata-pokerhands', () => {
         })
       })
     })
+
+    context('when a hand contains 2 pairs', () => {
+      it('should return false', () => {
+        expect(pokerhands.isPair([
+          { value: 'A', suit: 'Diamonds' },
+          { value: 'A', suit: 'Spades' },
+          { value: 'Q', suit: 'Diamonds' },
+          { value: 'Q', suit: 'Clubs' },
+          { value: 10, suit: 'Diamonds' }
+        ])).to.equal(false)
+      })
+    })
   })
 })
