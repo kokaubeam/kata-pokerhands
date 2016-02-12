@@ -153,13 +153,15 @@ class Pokerhands {
       return carry
     }, {})
 
-    for (let stat in stats) {
-      if(stats[stat] == 2) {
-        return true
+    let pairCount = 0
+    for (let cardValue in stats) {
+      let cardCount = stats[cardValue]
+      if (cardCount == 2) {
+        pairCount++
       }
     }
 
-    return false
+    return pairCount === 1
   }
 }
 
