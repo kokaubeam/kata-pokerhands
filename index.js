@@ -143,7 +143,23 @@ class Pokerhands {
     if (!this.isValidHand(hand)) {
       return false
     }
-    return true
+
+    const stats = hand.reduce((carry, current) => {
+      if (!(current.value in carry)) {
+        carry[current.value] = 1
+      } else {
+        carry[current.value]++
+      }
+      return carry
+    }, {})
+
+    for (let stat in stats) {
+      if(stats[stat] == 2) {
+        return true
+      }
+    }
+
+    return false
   }
 }
 
