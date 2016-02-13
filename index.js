@@ -46,10 +46,6 @@ class Pokerhands {
     return true
   }
 
-  countPairs(hand) {
-    return 1
-  }
-
   isRoyalFlush(hand) {
     let royalFlushChecklist = {
       A: false,
@@ -148,6 +144,10 @@ class Pokerhands {
       return false
     }
 
+    return this.countPairs(hand) === 1
+  }
+
+  countPairs(hand) {
     const stats = hand.reduce((carry, current) => {
       if (!(current.value in carry)) {
         carry[current.value] = 1
@@ -165,7 +165,7 @@ class Pokerhands {
       }
     }
 
-    return pairCount === 1
+    return pairCount
   }
 }
 

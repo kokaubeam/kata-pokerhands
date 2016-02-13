@@ -332,7 +332,7 @@ describe('kata-pokerhands', () => {
   })
 
   describe('#countPairs', () => {
-    context('when there is one pair in a hand', () => {
+    context('when the hand has one pair', () => {
       let pairCount
 
       before(() => {
@@ -350,7 +350,7 @@ describe('kata-pokerhands', () => {
       })
     })
 
-    context('when there is not a pair in a hand', () => {
+    context('when the hand does not have a pair', () => {
       let pairCount
 
       before(() => {
