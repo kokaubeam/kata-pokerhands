@@ -368,4 +368,27 @@ describe('kata-pokerhands', () => {
       })
     })
   })
+
+  describe('#countOccurrancesOfCardValues', () => {
+    let cardValueCounts
+
+    before(() => {
+      cardValueCounts = pokerhands.countOccurrancesOfCardValues([
+        { value: 'A', suit: 'Diamonds' },
+        { value: 'A', suit: 'Spades' },
+        { value: 'Q', suit: 'Diamonds' },
+        { value: 'J', suit: 'Clubs' },
+        { value: 10, suit: 'Diamonds' }
+      ])
+    })
+
+    it('should correctly count the occurances of card values in a hand', () => {
+      expect(cardValueCounts).to.deep.equal({
+        A: 2,
+        Q: 1,
+        J: 1,
+        10: 1
+      })
+    })
+  })
 })
