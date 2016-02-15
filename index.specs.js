@@ -292,10 +292,16 @@ describe('kata-pokerhands', () => {
       expect(pokerhands.isValidHand).to.have.been.called
     }))
 
-    it('should count the Occurances of card values in a hand', sinon.test(function() {
-      this.spy(pokerhands, 'countOccurrancesOfCardValues')
-      pokerhands.isPair()
-      expect(pokerhands.countOccurrancesOfCardValues).to.have.been.called
+    it('should count the pairs in the hand', sinon.test(function() {
+      this.spy(pokerhands, 'countPairs')
+      pokerhands.isPair([
+        { value: 'A', suit: 'Diamonds' },
+        { value: 'A', suit: 'Spades' },
+        { value: 'Q', suit: 'Diamonds' },
+        { value: 'J', suit: 'Diamonds' },
+        { value: 10, suit: 'Diamonds' }
+      ])
+      expect(pokerhands.countPairs).to.have.been.calledOnce
     }))
 
     context('when 2 of the 5 cards in the hand have the same value', () => {
@@ -338,6 +344,18 @@ describe('kata-pokerhands', () => {
   })
 
   describe('#countPairs', () => {
+    it('should count the occurances of the card values in the hand', sinon.test(function() {
+      this.spy(pokerhands, 'countOccurrancesOfCardValues')
+      pokerhands.countPairs([
+        { value: 'A', suit: 'Diamonds' },
+        { value: 'A', suit: 'Spades' },
+        { value: 'Q', suit: 'Diamonds' },
+        { value: 'J', suit: 'Diamonds' },
+        { value: 10, suit: 'Diamonds' }
+      ])
+      expect(pokerhands.countOccurrancesOfCardValues).to.have.been.calledOnce
+    }))
+
     context('when the hand has one pair', () => {
       let pairCount
 
