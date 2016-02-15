@@ -292,6 +292,12 @@ describe('kata-pokerhands', () => {
       expect(pokerhands.isValidHand).to.have.been.called
     }))
 
+    it('should count the Occurances of card values in a hand', sinon.test(function() {
+      this.spy(pokerhands, 'countOccurrancesOfCardValues')
+      pokerhands.isPair()
+      expect(pokerhands.countOccurrancesOfCardValues).to.have.been.called
+    }))
+
     context('when 2 of the 5 cards in the hand have the same value', () => {
       it('should return true', () => {
         expect(pokerhands.isPair([
