@@ -122,16 +122,9 @@ class Pokerhands {
       return false
     }
 
-    const stats = hand.reduce((carry, current) => {
-      if (!(current.value in carry)) {
-        carry[current.value] = 1
-      } else {
-        carry[current.value]++
-      }
-      return carry
-    }, {})
+    const cardCounts = this.countOccurrancesOfCardValues(hand)
 
-    const cardValueTypes = Object.keys(stats).length
+    const cardValueTypes = Object.keys(cardCounts).length
     if (cardValueTypes == 2) {
       return true
     }
