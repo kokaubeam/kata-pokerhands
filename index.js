@@ -99,17 +99,10 @@ class Pokerhands {
   }
 
   isFourOfAKind(hand) {
-    const stats = hand.reduce((carry, current) => {
-      if (!(current.value in carry)) {
-        carry[current.value] = 1
-      } else {
-        carry[current.value]++
-      }
-      return carry
-    }, {})
+    const cardCounts = this.countOccurrancesOfCardValues(hand)
 
-    for (let item in stats) {
-      if (stats[item] >= 4) {
+    for (let item in cardCounts) {
+      if (cardCounts[item] >= 4) {
         return true
       }
     }
