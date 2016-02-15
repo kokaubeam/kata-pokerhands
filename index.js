@@ -148,18 +148,11 @@ class Pokerhands {
   }
 
   countPairs(hand) {
-    const stats = hand.reduce((carry, current) => {
-      if (!(current.value in carry)) {
-        carry[current.value] = 1
-      } else {
-        carry[current.value]++
-      }
-      return carry
-    }, {})
+    const cardCounts = this.countOccurrancesOfCardValues(hand)
 
     let pairCount = 0
-    for (let cardValue in stats) {
-      let cardCount = stats[cardValue]
+    for (let cardValue in cardCounts) {
+      let cardCount = cardCounts[cardValue]
       if (cardCount == 2) {
         pairCount++
       }
