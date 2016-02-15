@@ -163,6 +163,18 @@ describe('kata-pokerhands', () => {
       expect(pokerhands.isValidHand).to.have.been.called
     }))
 
+    it('should count the occurances of the card values in the hand', sinon.test(function() {
+      this.spy(pokerhands, 'countOccurrancesOfCardValues')
+      pokerhands.isFullHouse([
+        { value: 3, suit: 'Hearts' },
+        { value: 3, suit: 'Clubs' },
+        { value: 3, suit: 'Diamonds' },
+        { value: 4, suit: 'Hearts' },
+        { value: 4, suit: 'Spades' }
+      ])
+      expect(pokerhands.countOccurrancesOfCardValues).to.have.been.calledOnce
+    }))
+
     context('when the hand contains 3 cards of the same value, with the remaining 2 cards forming a pair', () => {
       it('should return true', () => {
         const isFullHouse = pokerhands.isFullHouse([
