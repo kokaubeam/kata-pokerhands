@@ -133,6 +133,12 @@ class Pokerhands {
     return this.countPairs(hand) === 1
   }
 
+  isTwoPair(hand) {
+    if (!this.isValidHand(hand)) {
+      return false
+    }
+  }
+
   countPairs(hand) {
     const cardCounts = this.countOccurrancesOfCardValues(hand)
 
