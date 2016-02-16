@@ -386,6 +386,17 @@ describe('kata-pokerhands', () => {
       expect(pokerhands.countPairs).to.have.been.calledOnce
     }))
 
+    context('when the hand contains 2 different pairs', () => {
+      it('should return true', () => {
+        expect(pokerhands.isTwoPair([
+          { value: 'A', suit: 'Diamonds' },
+          { value: 'A', suit: 'Spades' },
+          { value: 'Q', suit: 'Diamonds' },
+          { value: 'Q', suit: 'Hearts' },
+          { value: 10, suit: 'Diamonds' }
+        ])).to.equal(true)
+      })
+    })
   })
 
   describe('#countPairs', () => {
