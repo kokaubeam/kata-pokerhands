@@ -373,6 +373,19 @@ describe('kata-pokerhands', () => {
       pokerhands.isTwoPair()
       expect(pokerhands.isValidHand).to.have.been.called
     }))
+
+    it('should count the pairs in the hand', sinon.test(function() {
+      this.spy(pokerhands, 'countPairs')
+      pokerhands.isTwoPair([
+        { value: 'A', suit: 'Diamonds' },
+        { value: 'A', suit: 'Spades' },
+        { value: 'Q', suit: 'Diamonds' },
+        { value: 'J', suit: 'Diamonds' },
+        { value: 10, suit: 'Diamonds' }
+      ])
+      expect(pokerhands.countPairs).to.have.been.calledOnce
+    }))
+
   })
 
   describe('#countPairs', () => {
