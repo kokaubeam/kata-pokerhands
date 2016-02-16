@@ -461,6 +461,14 @@ describe('kata-pokerhands', () => {
     })
   })
 
+  describe('#isThreeOfAKind', () => {
+    it('should validate the hand', sinon.test(function() {
+      this.spy(pokerhands, 'isValidHand')
+      pokerhands.isThreeOfAKind()
+      expect(pokerhands.isValidHand).to.have.been.called
+    }))
+  })
+
   describe('#countOccurrancesOfCardValues', () => {
     let cardValueCounts
 
