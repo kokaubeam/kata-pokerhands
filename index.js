@@ -137,9 +137,8 @@ class Pokerhands {
     if (!this.isValidHand(hand)) {
       return false
     }
-    if (this.countPairs(hand) == 2) {
-      return true
-    }
+
+    return this.countPairs(hand) == 2
   }
 
   countPairs(hand) {
