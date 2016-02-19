@@ -98,6 +98,14 @@ class Pokerhands {
     return suits.size == 1
   }
 
+  isThreeOfAKind(hand) {
+    if (!this.isValidHand(hand)) {
+      return false
+    }
+    
+    return false
+  }
+
   isFourOfAKind(hand) {
     const cardCounts = this.countOccurrancesOfCardValues(hand)
 
