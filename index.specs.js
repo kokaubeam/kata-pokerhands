@@ -479,6 +479,18 @@ describe('kata-pokerhands', () => {
       ])
       expect(pokerhands.countOccurrancesOfCardValues).to.have.been.calledOnce
     }))
+
+    context('when three of the cards in the hand have the same value', () => {
+      it('should return true', () => {
+        expect(pokerhands.isThreeOfAKind([
+          { value: 3, suit: 'Hearts' },
+          { value: 3, suit: 'Clubs' },
+          { value: 3, suit: 'Diamonds' },
+          { value: 4, suit: 'Hearts' },
+          { value: 5, suit: 'Spades' }
+        ])).to.equal(true)
+      })
+    })
   })
 
   describe('#countOccurrancesOfCardValues', () => {
