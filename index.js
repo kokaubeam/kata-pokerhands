@@ -102,7 +102,9 @@ class Pokerhands {
     if (!this.isValidHand(hand)) {
       return false
     }
-    
+
+    const cardCounts = this.countOccurrancesOfCardValues(hand)
+
     return false
   }
 
