@@ -505,6 +505,21 @@ describe('kata-pokerhands', () => {
     })
   })
 
+  describe('#isStraight', () => {
+    context('when the hand contains 5 cards with consecutive values', () => {
+      it('should return true', () => {
+        expect(pokerhands.isStraight([
+          { value: 2, suit: 'Hearts' },
+          { value: 3, suit: 'Clubs' },
+          { value: 4, suit: 'Diamonds' },
+          { value: 5, suit: 'Hearts' },
+          { value: 6, suit: 'Spades' }
+        ])).to.equal(true)
+      })
+    })
+  })
+
+
   describe('#countOccurrancesOfCardValues', () => {
     let cardValueCounts
 
