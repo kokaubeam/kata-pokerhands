@@ -105,6 +105,12 @@ class Pokerhands {
 
     const cardCounts = this.countOccurrancesOfCardValues(hand)
 
+    for (let item in cardCounts) {
+      if (cardCounts[item] == 3) {
+        return true
+      }
+    }
+
     return false
   }
 
