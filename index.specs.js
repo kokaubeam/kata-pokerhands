@@ -491,6 +491,18 @@ describe('kata-pokerhands', () => {
         ])).to.equal(true)
       })
     })
+
+    context('when the hand does not have three cards of the same value', () => {
+      it('should return false', () => {
+        expect(pokerhands.isThreeOfAKind([
+          { value: 3, suit: 'Hearts' },
+          { value: 2, suit: 'Clubs' },
+          { value: 3, suit: 'Diamonds' },
+          { value: 4, suit: 'Hearts' },
+          { value: 5, suit: 'Spades' }
+        ])).to.equal(false)
+      })
+    })
   })
 
   describe('#countOccurrancesOfCardValues', () => {
