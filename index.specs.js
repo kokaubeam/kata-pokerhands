@@ -517,6 +517,18 @@ describe('kata-pokerhands', () => {
         ])).to.equal(true)
       })
     })
+
+    context('when the hand contains 5 cards with unconsecutive values', () => {
+      it('should return false', () => {
+        expect(pokerhands.isStraight([
+          { value: 2, suit: 'Hearts' },
+          { value: 3, suit: 'Clubs' },
+          { value: 4, suit: 'Diamonds' },
+          { value: 5, suit: 'Hearts' },
+          { value: 9, suit: 'Spades' }
+        ])).to.equal(false)
+      })
+    })
   })
 
 
