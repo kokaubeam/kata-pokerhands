@@ -46,6 +46,22 @@ class Pokerhands {
     return true
   }
 
+  isStraight(hand) {
+    const cardValuesInHand = this.sortHand(hand).map(card => card.value)
+
+    let previousIndex = cardValues.indexOf(cardValuesInHand[0])
+    for (var i = 1; i < cardValuesInHand.length - 1; i++) {
+      let currentIndex = cardValues.indexOf(cardValuesInHand[i])
+      if (previousIndex + 1 === currentIndex) {
+        previousIndex = currentIndex
+        continue
+      }
+      return false
+    }
+
+    return true
+  }
+
   isRoyalFlush(hand) {
     let royalFlushChecklist = {
       A: false,
