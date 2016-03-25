@@ -50,7 +50,8 @@ class Pokerhands {
     const cardValuesInHand = this.sortHand(hand).map(card => card.value)
 
     let previousIndex = cardValues.indexOf(cardValuesInHand[0])
-    for (var i = 1; i < cardValuesInHand.length - 1; i++) {
+    for (var i = 1; i < cardValuesInHand.length; i++) {
+      console.log(cardValuesInHand[i]);
       let currentIndex = cardValues.indexOf(cardValuesInHand[i])
       if (previousIndex + 1 === currentIndex) {
         previousIndex = currentIndex
